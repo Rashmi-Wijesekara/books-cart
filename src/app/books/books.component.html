@@ -1,4 +1,4 @@
-<h2>Programming books list</h2>
+
 <!-- <button (click)="handleClick()" [disabled]="isDisabled">show books</button> -->
 <!-- <input type="text" [(ngModel)]="inputName"> -->
 <!-- <div>{{inputName}}</div> -->
@@ -8,7 +8,9 @@
   <ng-container *ngIf="isShowing">Hide books</ng-container>
 </button> -->
 
-<ul *ngIf="isShowing">
+
+
+<ul *ngIf="isShowing" class="flex flex-row gap-10 m-4 max-w-screen">
   <ng-container *ngFor="let book of books; let i=index">
     <app-book [book]="book"></app-book>
     <!-- <app-book (bookEmitter)="addToCart($event)" [book]="book"></app-book> -->

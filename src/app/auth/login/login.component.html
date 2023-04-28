@@ -1,0 +1,54 @@
+<div
+  class="p-6 dark:bg-gray-800 dark:text-gray-50 container w-1/2 mx-auto mt-5 rounded-lg"
+>
+  <form
+    class="container flex flex-col mx-auto space-y-6"
+    (ngSubmit)="login()"
+    #loginForm="ngForm"
+  >
+    <div class="col-span-full sm:col-span-3 flex flex-col gap-y-2">
+      <label for="email">Email</label>
+      <input
+        class="w-1/2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="form.email"
+        #email="ngModel"
+        required
+      />
+    </div>
+
+    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+      Email field must be valid
+    </div>
+
+    <div class="col-span-full sm:col-span-3 flex flex-col gap-y-2">
+      <label for="password">Password</label>
+      <input
+        class="w-1/2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="form.password"
+        #password="ngModel"
+        required
+      />
+    </div>
+
+    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+      Password field must be valid
+    </div>
+
+    <div>
+      <button
+        class="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900"
+        type="submit"
+        [disabled]="loginForm.form.invalid"
+      >
+        <ng-container *ngIf="isLoading()"> Loading... </ng-container>
+        <ng-container *ngIf="!isLoading()"> Login </ng-container>
+      </button>
+    </div>
+  </form>
+</div>

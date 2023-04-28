@@ -19,6 +19,7 @@ export class CartService {
   }
 
   get() {
+    console.log(this.cart)
     return this.cart;
   }
 }

@@ -1,16 +1,20 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { BooksComponent } from "./books/books.component";
-import { CartComponent } from "./cart/cart.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { BooksComponent } from './books/books.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
-	{ path: '', component: BooksComponent },
-	{ path: 'cart', component: CartComponent}
+  { path: '', component: BooksComponent },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}
